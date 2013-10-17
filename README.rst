@@ -1,6 +1,6 @@
-======================
-django-nginx-x509-auth
-======================
+===========
+django-x509
+===========
 
 How to enable x509 authentication with your Python WSGI app.
 
@@ -72,6 +72,8 @@ In practice
 
 Store the certificate in Django
 -------------------------------
+
+::
 
     # -*- coding: utf-8 -*-
     from django.db import models
