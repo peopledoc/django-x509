@@ -25,7 +25,7 @@ Well, NGINX will receive the certificate, validate it and provide some headers t
 Nginx configuration for certificate
 -----------------------------------
 
-::
+.. code:: nginx
 
     upstream app_server {
         # For a TCP configuration:
@@ -147,7 +147,7 @@ Then using curl::
 WSGI SSL verification
 ---------------------
 
-::
+.. code:: python
 
     CERTIFICATE_IS_MANDATORY = True
 
@@ -183,7 +183,7 @@ In practice
 Store the certificate in Django
 -------------------------------
 
-::
+.. code:: python
 
     # -*- coding: utf-8 -*-
     from django.db import models
@@ -206,7 +206,7 @@ Store the certificate in Django
 Build the certificate
 ---------------------
 
-::
+.. code:: bash
 
     # Create the CA Key and Certificate for signing Client Certs
     openssl req -new -x509 -days 3650 -newkey rsa:4096 -out client.crt -keyout ca.key
