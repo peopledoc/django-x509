@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib import admin
-from x509.django.models import Certificate, GenericCertificateAdmin
+from x509.django.models import Certificate, GenericCertificateM2M
 
 
 class CertificateAdmin(admin.ModelAdmin):
