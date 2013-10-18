@@ -187,13 +187,14 @@ Store the certificate in Django
 
     # -*- coding: utf-8 -*-
     from django.db import models
+	from django.contrib.sites.models import Site
     from django.utils.translation import ugettext_lazy as _
     from uuidfield import UUIDField
     
     
     class Certificate(models.Model):
         """Certificate x509 to contact the API."""
-        site = models.ForeignKey(RH2Site)
+        site = models.ForeignKey(Site)
         dn = models.TextField(_('Distinguished Name'))
         serial = UUIDField(unique=True)
         created_at = models.DateTimeField()

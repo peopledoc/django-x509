@@ -30,7 +30,7 @@ if __name__ == '__main__':  # ``import setup`` doesn't trigger setup().
         author_email='hubscher.remy@gmail.com',
         url='https://github.com/novapost/django-x509',
         license='MIT Licence',
-        packages=['x509'],
+        packages=['x509', 'django-uuidfield'],
         include_package_data=True,
         zip_safe=False,
         install_requires=['setuptools>=1.1.6', 'flask'],
