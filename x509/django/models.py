@@ -18,7 +18,7 @@ class Certificate(models.Model):
 
 class GenericCertificateM2M(models.Model):
     """Link a Certificate to any other object (User, object)."""
-    certificate = models.ForeignKey(Certificate)
+    certificate = models.ForeignKey(Certificate, related_name='attachees')
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')

@@ -160,8 +160,8 @@ WSGI SSL verification
         if not CERTIFICATE_IS_MANDATORY:
             return None
 
-        if 'HTTP_SSL_VERIFIED' in environ and \
-                environ['HTTP_SSL_CLIENT_VERIFIED'] == 'SUCCESS':
+        if 'HTTP_SSL_VERIFY in environ and \
+                environ['HTTP_SSL_CLIENT_VERIFY'] == 'SUCCESS':
             try:
                 serial = UUID(environ['HTTP_SSL_CLIENT_SERIAL'])
                 self.certificates.get(
