@@ -8,8 +8,7 @@ admin.autodiscover()
 
 urlpatterns = patterns(
     '',
-    url(r'^$', views.whoami, name='whoami'),
-    url(r'^add_pem/$', pem_form_view, name='whoami'),
+    url(r'^/login/$', views.whoami, name='whoami'),
+    url(r'^add_pem/$', pem_form_view, name='add_pem'),
     url(r'^admin/', include(admin.site.urls)),
-
 )
