@@ -32,5 +32,11 @@ if __name__ == '__main__':  # ``import setup`` doesn't trigger setup().
         license='MIT Licence',
         packages=['x509'],
         include_package_data=True,
-        zip_safe=False
+        zip_safe=False,
+        install_requires=['setuptools>=1.1.6', 'flask'],
+        entry_points={
+            'console_scripts': [
+                'test_app = x509.test_app:main',
+            ]
+        }
     )
