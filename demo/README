@@ -10,8 +10,7 @@ What does this demo implements
 ******************************
 
 * Add a form to create a certificate form the PEM
-* Add an url that says, certificate valid, certificate invalid and say
-  hello to the users linked to it.
+* If you contact the home page with a it will say hello to all the users linked to it.
 
 
 ***********************
