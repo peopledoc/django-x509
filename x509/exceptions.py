@@ -5,3 +5,7 @@ class CertificateInvalid(Exception):
 
 class CertificateMissing(Exception):
     pass
+
+
+class CertificateAlreadyExist(Exception):
+    pass

@@ -13,6 +13,7 @@ data_dir = join(root_dir, 'var')
 ROOT_URLCONF = 'demoproject.urls'
 WSGI_APPLICATION = 'demoproject.wsgi.application'
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Database.
 DATABASES = {
@@ -26,6 +27,7 @@ DATABASES = {
 # Required.
 SITE_ID = 1
 SECRET_KEY = "This is a secret made public on project's repository."
+USE_TZ = True
 
 # Media and static files.
 MEDIA_ROOT = join(data_dir, 'media')
