@@ -18,8 +18,8 @@ How does it works?
 
 Well, NGINX will receive the certificate, validate it and provide some headers to WSGI.
  
-   - The DN of the certificate (that contains the client domain)
-   - The Serial of the certificate (That is an UUID)
+- The DN of the certificate (that contains the client domain)
+- The Serial of the certificate (That is an UUID)
 
 
 Nginx configuration for certificate
@@ -64,6 +64,31 @@ Nginx configuration for certificate
             ssl_protocols       SSLv3 TLSv1 TLSv1.1 TLSv1.2;
             ssl_ciphers         HIGH:!RC4:!DES!3DES:!RC2:!MD5:!EXP:!aNULL:!eNULL;
     }
+
+
+The ``ngx_http_ssl_module`` module supports several embedded variables:
+
+- **$ssl_cipher :** returns the string of ciphers used for an
+    established SSL connection;
+- **$ssl_client_cert :** returns the client certificate in the PEM
+    format for an established SSL connection, with each line except
+    the first prepended with the tab character; this is intended for
+    the use in the proxy_set_header directive;
+- **$ssl_client_raw_cert :** returns the client certificate in the
+    PEM format for an established SSL connection;
+- **$ssl_client_serial :** returns the serial number of the client
+    certificate for an established SSL connection;
+- **$ssl_client_s_dn :** returns the “subject DN” string of the
+    client certificate for an established SSL connection;
+- **$ssl_client_i_dn :** returns the “issuer DN” string of the client
+    certificate for an established SSL connection;
+- **$ssl_client_verify :** returns the result of client certificate
+    verification: “SUCCESS”, “FAILED”, and “NONE” if a certificate
+    was not present;
+- **$ssl_protocol :** returns the protocol of an established SSL
+    connection;
+- **$ssl_session_id :** returns the session identifier of an
+    established SSL connection.
 
 
 Test your configuration
