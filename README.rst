@@ -226,7 +226,7 @@ Build the certificate
     openssl x509 -req -days 3650 -in client.csr -CA ca.crt -CAkey ca.key -set_serial "${serial}" -out client.crt
 
     # Verify the client certificate
-    openssl x509 -subject -serial -noout -in client.crt
+    openssl x509 -serial -subject -startdate -enddate -noout -in client.crt
     
     # Or
     openssl x509 -text -noout -in client.crt
