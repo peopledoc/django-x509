@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 from uuid import UUID
 from x509.django.models import Certificate
-from x509.exceptions import CertificateMissing, CertificateInvalid
+from x509.exceptions import (
+    CertificateMissing, CertificateInvalid, HeaderMissing
+)
 
 
 def raise_for_certificate(environ):
@@ -20,7 +22,6 @@ def raise_for_certificate(environ):
             CertificateInvalid('Certificat serial (%s) is not a valid UUID.' %
                                serial)
         except KeyError:
-            raise KeyError('Nginx didn\'t gave us the serial in '
-                           'HTTP_SSL_CLIENT_SERIAL.')
+            raise HeaderMissing('HTTP_SSL_CLIENT_SERIAL')
         else:
             return certificate

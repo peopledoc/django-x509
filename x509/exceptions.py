@@ -9,3 +9,7 @@ class CertificateMissing(Exception):
 
 class CertificateAlreadyExist(Exception):
     pass
+
+
+class HeaderMissing(Exception):
+    pass
