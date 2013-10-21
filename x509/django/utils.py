@@ -19,6 +19,7 @@ def raise_for_certificate(environ):
             CertificateInvalid('This certificate (%s) is not linked to '
                                'your app.' % serial)
         except ValueError:
+            serial = environ['HTTP_SSL_CLIENT_SERIAL']
             CertificateInvalid('Certificat serial (%s) is not a valid UUID.' %
                                serial)
         except KeyError:
