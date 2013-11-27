@@ -33,9 +33,11 @@ class PEMForm(forms.Form):
         params['expire_at'] = parse(cert.get_notAfter())
 
         try:
-            Certificate.objects.get(serial=params['serial'])
+            certificate = Certificate.objects.get(serial=params['serial'])
         except Certificate.DoesNotExist:
             return Certificate.objects.create(**params)
         else:
-            raise CertificateAlreadyExist('This certificate already exists %s'
-                                          % params['serial'])
+            exception = CertificateAlreadyExist(
+                'This certificate already exists %s' % params['serial'])
+            exception.certificate = certificate
+            raise exception
