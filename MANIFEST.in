@@ -1,0 +1,4 @@
+recursive-include x509 *
+global-exclude *.pyc .*.swp
+include *.txt
+include README.rst VERSION requirements.pip
