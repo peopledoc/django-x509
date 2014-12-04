@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 from os.path import abspath, dirname, join
 from setuptools import setup
 
@@ -26,7 +25,7 @@ if __name__ == '__main__':  # ``import setup`` doesn't trigger setup().
                      'Programming Language :: Python :: 2.7',
                      'Programming Language :: Python :: 3'],
         keywords='django wsgi x509 auth',
-        author='Rémy Hubscher',
+        author=u'Rémy Hubscher',
         author_email='hubscher.remy@gmail.com',
         url='https://github.com/novapost/django-x509',
         license='MIT Licence',
