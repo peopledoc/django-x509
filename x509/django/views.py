@@ -11,7 +11,6 @@ class PEMFormView(FormView):
 
     def form_valid(self, form):
         certificate = form.get_certificate()
-        print certificate
         return HttpResponse('%s as been imported.'
                             '<a href=".">Add another one</a>.' % certificate)
 
