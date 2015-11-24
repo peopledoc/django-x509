@@ -2,7 +2,8 @@
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.db import models
-from uuidfield import UUIDField
+
+from x509.django.compat import UUIDField
 
 
 class Certificate(models.Model):

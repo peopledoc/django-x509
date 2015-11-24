@@ -17,7 +17,7 @@ How does it works?
 ==================
 
 Well, NGINX will receive the certificate, validate it and provide some headers to WSGI.
- 
+
 - The DN of the certificate (that contains the client domain)
 - The Serial of the certificate (That is an UUID)
 
@@ -31,15 +31,15 @@ Nginx configuration for certificate
         # For a TCP configuration:
         server 127.0.0.1:8000 fail_timeout=0;
     }
-    
-    
+
+
     server {
         listen 443 default;
-    
+
         location / {
             try_files $uri @proxy_to_app;
         }
-    
+
         # Proxy to frontend application (WSGI).
         location @proxy_to_app {
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -54,13 +54,13 @@ Nginx configuration for certificate
             proxy_redirect off;
             proxy_pass http://app_server;
         }
-    
+
             ssl on;
             ssl_certificate /etc/ssl/www-domain.crt;
             ssl_certificate_key /etc/ssl/www-domain.key;
             ssl_client_certificate /etc/ssl/org-ca.crt;
             ssl_verify_client optional;  # on | off | optional | optional_no_ca
-    
+
             ssl_protocols       SSLv3 TLSv1 TLSv1.1 TLSv1.2;
             ssl_ciphers         HIGH:!RC4:!DES!3DES:!RC2:!MD5:!EXP:!aNULL:!eNULL;
     }
@@ -68,7 +68,7 @@ Nginx configuration for certificate
 
 The ``ngx_http_ssl_module`` module supports several embedded variables:
 
-- **$ssl_cipher :** 
+- **$ssl_cipher :**
     returns the string of ciphers used for an established SSL
     connection;
 - **$ssl_client_cert :**
@@ -79,7 +79,7 @@ The ``ngx_http_ssl_module`` module supports several embedded variables:
 - **$ssl_client_raw_cert :**
     returns the client certificate in the PEM format for an
     established SSL connection;
-- **$ssl_client_serial :** 
+- **$ssl_client_serial :**
     returns the serial number of the client certificate for an
     established SSL connection;
 - **$ssl_client_s_dn :**
@@ -88,7 +88,7 @@ The ``ngx_http_ssl_module`` module supports several embedded variables:
 - **$ssl_client_i_dn :**
     returns the “issuer DN” string of the client certificate for an
     established SSL connection;
-- **$ssl_client_verify :** 
+- **$ssl_client_verify :**
     returns the result of client certificate verification: “SUCCESS”,
     “FAILED”, and “NONE” if a certificate was not present;
 - **$ssl_protocol :**
@@ -108,7 +108,7 @@ Test your configuration
 
 Then using curl::
 
-    curl -k 'https://localhost' --key examples/localhost/client.key --cert examples/localhost/client.crt 
+    curl -k 'https://localhost' --key examples/localhost/client.key --cert examples/localhost/client.crt
 
     {'CONTENT_LENGTH': '',
      'CONTENT_TYPE': '',
@@ -141,7 +141,7 @@ Then using curl::
      'wsgi.url_scheme': 'http',
      'wsgi.version': (1, 0)}
 
-.. Note:: If you get a certificate error, you may not be using the CA that signed the client_certificate.    
+.. Note:: If you get a certificate error, you may not be using the CA that signed the client_certificate.
 
 
 WSGI SSL verification
@@ -187,19 +187,18 @@ Store the certificate in Django
 
     # -*- coding: utf-8 -*-
     from django.db import models
-	from django.contrib.sites.models import Site
+	  from django.contrib.sites.models import Site
     from django.utils.translation import ugettext_lazy as _
-    from uuidfield import UUIDField
-    
-    
+
+
     class Certificate(models.Model):
         """Certificate x509 to contact the API."""
         site = models.ForeignKey(Site)
         dn = models.TextField(_('Distinguished Name'))
-        serial = UUIDField(unique=True)
+        serial = models.UUIDField(unique=True)
         created_at = models.DateTimeField()
         expire_at = models.DateTimeField()
-    
+
         def __unicode__(self):
             return u'%s - %s' % (self.site, self.dn)
 
@@ -217,16 +216,16 @@ Build the certificate
 
     # We're self signing our own server cert here.  This is a no-no in production.
     openssl x509 -req -days 365 -in server.csr -CA ca.crt -CAkey ca.key -set_serial 01 -out server.crt
-    
+
     # Create the Client Key and CSR
     openssl req -new -newkey rsa:4096 -out client.csr -keyout client.key
-    
+
     # Sign the client certificate with our CA cert.  Unlike signing our own server cert, this is what we want to do.
     serial="0x`python -c "import uuid; print(str(uuid.uuid4()).replace('-', ''))"`"
     openssl x509 -req -days 3650 -in client.csr -CA ca.crt -CAkey ca.key -set_serial "${serial}" -out client.crt
 
     # Verify the client certificate
     openssl x509 -serial -subject -startdate -enddate -noout -in client.crt
-    
+
     # Or
     openssl x509 -text -noout -in client.crt
