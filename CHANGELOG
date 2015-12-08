@@ -1,7 +1,7 @@
 Changelog for django-x509
 =========================
 
-0.3 (unreleased)
+0.3 (2015-12-08)
 ----------------
 
 - Add migrations for Django models. Fix Django 1.8 error.
