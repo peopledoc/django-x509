@@ -1,3 +1,6 @@
+.. image:: https://travis-ci.org/novafloss/django-x509.svg?branch=master
+    :target: https://travis-ci.org/novafloss/django-x509
+
 ===========
 django-x509
 ===========
