@@ -32,5 +32,5 @@ if __name__ == '__main__':  # ``import setup`` doesn't trigger setup().
         packages=['x509'],
         include_package_data=True,
         zip_safe=False,
-        install_requires=['pyOpenSSL'],
+        install_requires=['pyOpenSSL', 'python-dateutil'],
     )

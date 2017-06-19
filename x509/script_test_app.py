@@ -1,5 +1,6 @@
-from flask import Flask, request, make_response
 from cStringIO import StringIO
+
+from flask import Flask, make_response, request
 
 application = Flask(__name__)
 

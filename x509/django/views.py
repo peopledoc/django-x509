@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-from django.views.generic import FormView
 from django.http import HttpResponse
-
+from django.views.generic import FormView
 from x509.django.forms import PEMForm
 
 

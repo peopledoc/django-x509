@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
-from OpenSSL import crypto
+
 from cStringIO import StringIO
-from dateutil.parser import parse
 from uuid import UUID
 
-from django import forms
+from dateutil.parser import parse
+from OpenSSL import crypto
 
+from django import forms
+from x509.django.models import Certificate
 from x509.exceptions import CertificateAlreadyExist
 from x509.utils import get_subject_from_components
-from x509.django.models import Certificate
 
 
 class PEMForm(forms.Form):
