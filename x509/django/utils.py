@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from uuid import UUID
+
 from x509.django.models import Certificate
-from x509.exceptions import (
-    CertificateMissing, CertificateInvalid, HeaderMissing
-)
+from x509.exceptions import (CertificateInvalid, CertificateMissing,
+                             HeaderMissing)
 
 
 def raise_for_certificate(environ):

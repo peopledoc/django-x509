@@ -1,0 +1,16 @@
+[flake8]
+ignore=E501
+max-complexity = 100
+exclude =
+    .tox,
+    __pycache__,
+    .git,
+    *.css,
+    *.html,
+    *.xml,
+    *.yml,
+    *.txt,
+    *.md,
+    *.js,
+    .flake8
+filename = *.py

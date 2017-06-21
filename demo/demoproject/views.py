@@ -6,7 +6,7 @@ from x509.django.utils import raise_for_certificate
 
 class WhoIsLinkedToMe(View):
     def get(self, request, *args, **kwargs):
-        response = HttpResponse(mimetype='text/plain')
+        response = HttpResponse(content_type='text/plain')
         response.status_code = 403
 
         try:

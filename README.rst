@@ -196,14 +196,14 @@ Store the certificate in Django
 
     class Certificate(models.Model):
         """Certificate x509 to contact the API."""
-        site = models.ForeignKey(Site)
+        serial = UUIDField(unique=True)
         dn = models.TextField(_('Distinguished Name'))
         serial = models.UUIDField(unique=True)
         created_at = models.DateTimeField()
         expire_at = models.DateTimeField()
 
         def __unicode__(self):
-            return u'%s - %s' % (self.site, self.dn)
+            return u'%s' % self.dn
 
 
 Build the certificate

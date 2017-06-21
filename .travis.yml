@@ -1,5 +1,12 @@
 language: python
 python:
   - "2.7"
-install: pip install . --use-mirrors
-script: python setup.py test
+env:
+  - TOXENV=py27-django18
+  - TOXENV=py27-django19
+  - TOXENV=isort
+  - TOXENV=flake8
+
+install:
+    - pip install tox
+script: tox -e $TOXENV
