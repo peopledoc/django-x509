@@ -5,9 +5,10 @@ from django.db import models
 from x509.django.compat import UUIDField
 
 try:
-    from django.contrib.contenttypes.generic import GenericForeignKey
-except ImportError:
     from django.contrib.contenttypes.fields import GenericForeignKey
+except ImportError:
+    # Django 1.8
+    from django.contrib.contenttypes.generic import GenericForeignKey
 
 
 class Certificate(models.Model):
