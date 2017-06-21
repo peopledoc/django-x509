@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
-
-from cStringIO import StringIO
 from uuid import UUID
 
 from dateutil.parser import parse
 from OpenSSL import crypto
+from six import BytesIO
 
 from django import forms
 from x509.django.models import Certificate
@@ -17,7 +16,7 @@ class PEMForm(forms.Form):
 
     def get_certificate(self):
         # Get the file in a StringIO
-        f = StringIO()
+        f = BytesIO()
         for chunk in self.cleaned_data['pem_file'].chunks():
             f.write(chunk)
 
