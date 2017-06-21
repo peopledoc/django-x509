@@ -17,13 +17,16 @@ if __name__ == '__main__':  # ``import setup`` doesn't trigger setup().
         description="Let you be behind a nginx configuration an get "
                     "x509 auth credentials",
         long_description=read_relative_file('README.rst'),
-        classifiers=['Development Status :: 4 - Beta',
-                     'Environment :: Web Environment',
-                     'Intended Audience :: Developers',
-                     'License :: OSI Approved :: MIT License',
-                     'Programming Language :: Python',
-                     'Programming Language :: Python :: 2.7',
-                     'Programming Language :: Python :: 3'],
+        classifiers=[
+            'Development Status :: 5 - Production/Stable',
+            'Environment :: Web Environment',
+            'Intended Audience :: Developers',
+            'License :: OSI Approved :: MIT License',
+            'Programming Language :: Python',
+            'Programming Language :: Python :: 2.7',
+            'Programming Language :: Python :: 3'
+            'Programming Language :: Python :: 3.5'
+        ],
         keywords='django wsgi x509 auth',
         author=u'Rémy Hubscher',
         author_email='hubscher.remy@gmail.com',
