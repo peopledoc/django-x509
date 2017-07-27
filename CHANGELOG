@@ -5,6 +5,7 @@ Changelog for django-x509
 ----------------
 
 - Add Python3 and Django 1.10 support.
+- Explicit on_delete behaviour for ForeignKeys
 
 
 0.4 (2017-06-21)
