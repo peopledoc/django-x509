@@ -1,7 +1,7 @@
 Changelog for django-x509
 =========================
 
-0.5 (unreleased)
+0.5 (2017-09-08)
 ----------------
 
 - Add Python3 and Django 1.10 and 1.11 support.
